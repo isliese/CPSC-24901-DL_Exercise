@@ -5,7 +5,7 @@ from torchvision import transforms
 from PIL import Image
 import os
 
-# Define the CNN architecture (must match the one used in training)
+# Define the CNN architecture 
 class ImprovedCNN(nn.Module):
     def __init__(self):
         super(ImprovedCNN, self).__init__()
