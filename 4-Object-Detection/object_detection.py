@@ -22,7 +22,7 @@ def main():
     #---------------------------------------------------------------------
     # 3) Perform inference on your local image.
     #---------------------------------------------------------------------
-    image_path = "objects.jpg"  # Update if your image is stored elsewhere
+    image_path = "4-Object-Detection/objects.jpg"  # Update if your image is stored elsewhere
     results = model(image_path)
 
     #---------------------------------------------------------------------

@@ -15,7 +15,7 @@ def main():
     # 1. DATA LOADING & PREPROCESSING
     ################################################################
     
-    data_dir = "L05_DL_Vision_Dogs"  # Folder containing train/val subfolders:
+    data_dir = "3-Image-Classification/L05_DL_Vision_Dogs"  # Folder containing train/val subfolders:
                                     # L05_DL_Vision_Dogs/
                                     #    train/
                                     #       Bulldog/
@@ -102,7 +102,7 @@ def main():
     ################################################################
     # 4. TRAINING LOOP
     ################################################################
-    num_epochs = 2  # For demonstration, set low. Adjust as needed.
+    num_epochs = 20
     print(f"\n===== Starting Training for {num_epochs} epoch(s) =====")
     
     start_time = time.time()
