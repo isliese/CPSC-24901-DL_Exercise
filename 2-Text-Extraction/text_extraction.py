@@ -11,6 +11,7 @@ from torch.utils.data import Dataset, DataLoader
 import torchvision.transforms as transforms
 from sklearn.preprocessing import LabelEncoder
 import torch.nn.functional as F
+import time
 
 # Tesseract setup for OCR
 pytesseract.pytesseract.tesseract_cmd = '/opt/homebrew/bin/tesseract'  # Adjust based on your `which tesseract` output
@@ -105,6 +106,7 @@ def train_model(zip_path, ground_truth_csv, epochs=5):
     optimizer = optim.Adam(model.parameters(), lr=0.001)
 
     # Step 5: Train the model
+    start_time = time.time()  # Record the start time
     for epoch in range(epochs):
         model.train()
         running_loss = 0.0
@@ -124,10 +126,11 @@ def train_model(zip_path, ground_truth_csv, epochs=5):
             _, predicted = torch.max(output, 1)
             correct += (predicted == labels).sum().item()
             total += labels.size(0)
-
-        print(f"Epoch {epoch+1}, Loss: {running_loss / len(train_loader):.4f}, Accuracy: {100 * correct / total:.2f}%")
-    #Print total accuracy for all epochs
-    print(f"Total Accuracy: {100 * correct / total:.2f}%")
+        # Print loss and accuracy for each epoch
+        print(f"Epoch {epoch+1}, Loss: {running_loss / len(train_loader):.4f}, Accuracy: {100 * correct / total:.2f}%, Time: {time.time() - start_time:.2f} seconds")
+    #Print total accuracy for all epochs and time
+    print(f"Total Training Accuracy: {100 * correct / total:.2f}%")
+    print(f"Total Training Time: {time.time() - start_time:.2f} seconds")
         
 
 
