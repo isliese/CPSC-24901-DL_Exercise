@@ -126,6 +126,8 @@ def train_model(zip_path, ground_truth_csv, epochs=5):
             total += labels.size(0)
 
         print(f"Epoch {epoch+1}, Loss: {running_loss / len(train_loader):.4f}, Accuracy: {100 * correct / total:.2f}%")
+    #Print total accuracy for all epochs
+    print(f"Total Accuracy: {100 * correct / total:.2f}%")
         
 
 
@@ -203,7 +205,7 @@ def main():
             create_ground_truth_template(zip_path, ground_truth_csv)
 
         # Step 3: Train the CNN model
-        train_model(zip_path, ground_truth_csv, epochs=10)
+        train_model(zip_path, ground_truth_csv, epochs=8)
     else:
         print("No text extracted from zip file.")
 
