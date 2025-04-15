@@ -14,6 +14,7 @@ def main():
     ################################################################
     # 1. DATA LOADING & PREPROCESSING
     ################################################################
+    
     data_dir = "L05_DL_Vision_Dogs"  # Folder containing train/val subfolders:
                                     # L05_DL_Vision_Dogs/
                                     #    train/
