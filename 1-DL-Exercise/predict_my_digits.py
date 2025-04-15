@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torchvision import transforms
+from torchvision.transforms import functional as TF
 from PIL import Image
 import os
 
@@ -50,12 +51,14 @@ model = ImprovedCNN().to(device)
 model.load_state_dict(torch.load(model_path, map_location=device))
 model.eval()
 
-# Image transformation (must match training transforms)
+#Image transformation (must match training transforms)
+# Normalize + invert image
 transform = transforms.Compose([
-    transforms.Grayscale(),                    # Convert to grayscale
-    transforms.Resize((28, 28)),               # Resize to 28x28
-    transforms.ToTensor(),                     # Convert to tensor
-    transforms.Normalize((0.5,), (0.5,))       # Normalize
+    transforms.Grayscale(),
+    transforms.Resize((28, 28)),
+    transforms.ToTensor(),
+    transforms.Lambda(lambda x: 1 - x),  # Invert black/white
+    transforms.Normalize((0.5,), (0.5,))
 ])
 
 # Prediction function

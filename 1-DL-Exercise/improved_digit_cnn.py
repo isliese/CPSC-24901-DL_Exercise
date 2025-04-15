@@ -53,7 +53,7 @@ class ImprovedCNN(nn.Module):
 
 # Transform
 transform = transforms.Compose([
-    transforms.RandomRotation(10),             # rotate -10 ~ 10
+    transforms.RandomRotation(10),         
     transforms.RandomAffine(0, translate=(0.1, 0.1)),  
     transforms.ToTensor(),
     transforms.Normalize((0.5,), (0.5,))
